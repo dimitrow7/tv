@@ -1,0 +1,97 @@
+        body, html {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .btn {
+            font-family: 'Montserrat', sans-serif !important;
+            font-size: 0.85rem !important;
+            font-weight: 500;
+        }
+
+        p {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+        }
+        
+        .card-control {
+            margin-top: 1rem;
+        }
+
+        .card-text {
+            margin-bottom: 0.5rem !important; 
+        }
+        
+        .banner {
+            width: 100%;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            background:linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("./banner-bg.jpeg");
+            background-position: bottom; /* Center the image */
+            background-repeat: no-repeat; /* Do not repeat the image */
+            background-size: auto; /* Resize the background image to cover the entire container */
+        }
+
+        .banner-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .banner-content img {
+            max-width: 150px;
+            margin-bottom: 15px;
+        }
+
+        .banner-content h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 2rem;
+            margin: 10px 0;
+        }
+
+        .h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            margin: 10px 0;
+        }
+
+        .banner-content p, .banner-content ul {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            font-size: 0.9rem;
+            max-width: 600px;
+            line-height: 1.5;
+            text-align: left;
+            margin: 0 auto;
+        }
+
+        .play-icon {
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        .position-relative {
+            position: relative;
+        }
+
+        footer {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            background-color: #000 !important;
+            color: #fff;
+            padding: 10px 0;
+            font-size: 0.9rem;
+        }
+
+        video {
+            background-color: #000;
+        }

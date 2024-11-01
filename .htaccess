@@ -1,0 +1,8 @@
+<IfModule mod_fcgid.c>
+AddHandler fcgid-script .php
+FcgidWrapper /home/resinwoo/bitsee.eu/barhey2/php.fcgi .php
+</IfModule>
+
+RewriteEngine On
+# Пренасочване на /dashboard към /dashboard.php
+RewriteRule ^dashboard$ dashboard.php [L]
