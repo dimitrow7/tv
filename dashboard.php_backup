@@ -1,0 +1,245 @@
+<?php
+session_start();
+require_once 'config.php';
+
+$mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+// Проверка за грешки при връзката с базата данни
+if ($mysqli->connect_error) {
+    die("Database connection failed: " . $mysqli->connect_error);
+}
+
+// Проверка за вход в системата
+if (isset($_POST['login'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    $result = $mysqli->query("SELECT * FROM users WHERE username='$username'");
+    $user = $result->fetch_assoc();
+
+    if ($user && password_verify($password, $user['password'])) {
+        $_SESSION['user'] = $user['username'];
+        header("Location: dashboard.php");
+        exit();
+    } else {
+        echo "Грешно потребителско име или парола.";
+    }
+}
+
+if (isset($_POST['upload']) && isset($_SESSION['user'])) {
+    $file = $_FILES['file'];
+    $filePath = 'uploads/' . basename($file['name']);
+    $thumbnailPath = null;
+    $fileType = strpos($file['type'], 'video') !== false ? 'video' : 'image';
+    $uploadedBy = $_SESSION['user'];
+
+    if (move_uploaded_file($file['tmp_name'], $filePath)) {
+        if (!empty($_POST['thumbnail'])) {
+            $thumbnailData = $_POST['thumbnail'];
+            $thumbnailPath = 'uploads/thumbnails/' . pathinfo($file['name'], PATHINFO_FILENAME) . '.jpg';
+
+            if (!is_dir('uploads/thumbnails')) {
+                mkdir('uploads/thumbnails', 0777, true);
+            }
+
+            $thumbnailData = str_replace('data:image/jpeg;base64,', '', $thumbnailData);
+            $thumbnailData = base64_decode($thumbnailData);
+            file_put_contents($thumbnailPath, $thumbnailData);
+        }
+
+        $start_date = $_POST['start_date'] ?? null;
+        $end_date = $_POST['end_date'] ?? null;
+        $days_of_week = isset($_POST['days_of_week']) ? implode("", $_POST['days_of_week']) : null;
+        $start_time = $_POST['start_time'] ?? null;
+        $end_time = $_POST['end_time'] ?? null;
+
+        $stmt = $mysqli->prepare("
+            INSERT INTO media_files (file_path, file_type, uploaded_by, thumbnail, start_date, end_date, days_of_week, start_time, end_time) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ");
+        $stmt->bind_param("sssssssss", $filePath, $fileType, $uploadedBy, $thumbnailPath, $start_date, $end_date, $days_of_week, $start_time, $end_time);
+        $stmt->execute();
+        $stmt->close();
+
+        echo "Файлът е качен успешно.";
+    } else {
+        echo "Възникна грешка при качването.";
+    }
+}
+
+
+// Проверка за изтриване на файлове
+if (isset($_GET['delete']) && isset($_SESSION['user'])) {
+    $id = $_GET['delete'];
+    $result = $mysqli->query("SELECT * FROM media_files WHERE id=$id");
+    $file = $result->fetch_assoc();
+
+    if ($file) {
+        // Изтриване на файла
+        if (file_exists($file['file_path'])) {
+            unlink($file['file_path']);
+        }
+
+        // Изтриване на миниатюрата, ако съществува
+        if (!empty($file['thumbnail']) && file_exists($file['thumbnail'])) {
+            unlink($file['thumbnail']);
+        }
+
+        // Изтриване на записа в базата данни
+        $mysqli->query("DELETE FROM media_files WHERE id=$id");
+    }
+
+    // Пренасочване след изтриване, за да се избегне повторно изпращане на заявка при презареждане
+    header("Location: dashboard.php");
+    exit();
+}
+
+// Зареждане на всички медийни файлове за преглед в дашборда
+$mediaFiles = $mysqli->query("SELECT * FROM media_files");
+?>
+
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?php echo DASHBOARD_TITLE; ?></title>
+    <link href="./assets/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body class="bg-light">
+    <!-- Банер секция -->
+    <div class="banner">
+        <div class="banner-content">
+            <img src="./assets/barhey-logo-sm.png" alt="Лого">
+            <h2><?php echo BANNER_HEADING; ?></h2>
+            <p><?php echo BANNER_SUBTEXT; ?></p>
+            <p><?php echo BANNER_SUBTEXT_2; ?></p>
+        </div>
+    </div>
+
+    <div class="container py-4">
+        <?php if (!isset($_SESSION['user'])): ?>
+            <h2 class="mb-4">Вход</h2>
+            <form method="POST" class="card p-4 shadow">
+                <div class="mb-3">
+                    <input type="text" name="username" class="form-control" placeholder="Потребителско име" required>
+                </div>
+                <div class="mb-3">
+                    <input type="password" name="password" class="form-control" placeholder="Парола" required>
+                </div>
+                <button type="submit" name="login" class="btn btn-primary">Вход</button>
+            </form>
+        <?php else: ?>
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h3>Здравей, <?php echo htmlspecialchars($_SESSION['user']); ?></h3>
+                <div>
+                    <a href="index.php" class="btn btn-primary me-2" target="_blank">
+                        <i class="bi bi-eye"></i> Преглед
+                    </a>
+                    <a href="logout.php" class="btn btn-danger">
+                        <i class="bi bi-person-walking"></i> Изход
+                    </a>
+                </div>
+            </div>
+
+
+            <!-- Форма за качване на файлове -->
+            <form method="POST" enctype="multipart/form-data" class="mb-4 card p-4 shadow">
+            <div class="mb-3">
+                <input type="file" name="file" accept="image/*,video/*" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="start_date">Начална дата:</label>
+                <input type="date" name="start_date" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="end_date">Крайна дата:</label>
+                <input type="date" name="end_date" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label>Дни от седмицата:</label><br>
+                <label><input type="checkbox" name="days_of_week[]" value="1"> Понеделник</label>
+                <label><input type="checkbox" name="days_of_week[]" value="2"> Вторник</label>
+                <label><input type="checkbox" name="days_of_week[]" value="3"> Сряда</label>
+                <label><input type="checkbox" name="days_of_week[]" value="4"> Четвъртък</label>
+                <label><input type="checkbox" name="days_of_week[]" value="5"> Петък</label>
+                <label><input type="checkbox" name="days_of_week[]" value="6"> Събота</label>
+                <label><input type="checkbox" name="days_of_week[]" value="7"> Неделя</label>
+            </div>
+            <div class="mb-3">
+                <label for="start_time">Начален час (24-часов формат):</label>
+                <input type="text" id="start_time" name="start_time" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="end_time">Краен час (24-часов формат):</label>
+                <input type="text" id="end_time" name="end_time" class="form-control" required>
+            </div>
+            <button type="submit" name="upload" class="btn btn-success">Качване</button>
+        </form>
+
+
+            <!-- Списък с медийни файлове -->
+            <h2 class="mb-4">Медийни файлове:</h2>
+            <div class="row row-cols-1 row-cols-md-4 g-4">
+                <?php while ($file = $mediaFiles->fetch_assoc()): ?>
+                    <div class="col">
+                        <div class="card shadow position-relative">
+                            <?php if ($file['file_type'] === 'image'): ?>
+                                <img src="<?php echo htmlspecialchars($file['file_path']); ?>" class="card-img-top" alt="Image thumbnail">
+                            <?php elseif ($file['file_type'] === 'video' && !empty($file['thumbnail'])): ?>
+                                <div class="position-relative">
+                                    <img src="<?php echo htmlspecialchars($file['thumbnail']); ?>" class="card-img-top" alt="Video thumbnail">
+                                    <span class="play-icon position-absolute top-50 start-50 translate-middle">
+                                        <i class="bi bi-play-circle-fill" style="font-size: 3rem; color: white;"></i>
+                                    </span>
+                                </div>
+                            <?php else: ?>
+                                <video src="<?php echo htmlspecialchars($file['file_path']); ?>" class="card-img-top" muted autoplay loop></video>
+                            <?php endif; ?>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    <i class="bi bi-folder2-open"></i> 
+                                    <strong>
+                                        <?php 
+                                            $fileName = htmlspecialchars(basename($file['file_path']));
+                                            if (strlen($fileName) > 30) {
+                                                echo substr($fileName, 0, 7) . '...' . substr($fileName, -13);
+                                            } else {
+                                                echo $fileName;
+                                            }
+                                        ?>
+                                    </strong>
+                                </p>
+                                <p class="card-text"><i class="bi bi-person-square"></i> <?php echo htmlspecialchars($file['uploaded_by']); ?></p>
+                                <p class="card-text"><i class="bi bi-calendar4-week"></i> <?php echo htmlspecialchars($file['uploaded_at']); ?></p>
+                                <div class="card-control">
+                                    <a href="<?php echo htmlspecialchars($file['file_path']); ?>" class="btn btn-primary me-2" target="_blank">
+                                        <i class="bi bi-eye"></i> 
+                                    </a>
+                                    <a href="?delete=<?php echo $file['id']; ?>" class="btn btn-danger" onclick="return confirm('Сигурни ли сте, че искате да изтриете този файл?');">
+                                    <i class="bi bi-trash3-fill"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php endwhile; ?>
+            </div>
+        <?php endif; ?>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-3 mt-4">
+        <p><?php echo SYSTEM_NAME; ?> - <?php echo SYSTEM_VERSION; ?></p>
+        <p><?php echo DEVELOPED_BY; ?></p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/thumb.js"></script>
+    <script src="./assets/time.js"></script> 
+</body>
+</html>

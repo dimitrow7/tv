@@ -9,6 +9,14 @@ define('DB_NAME', 'resinwoo_media_dashboard');
 define('UPLOADS_DIR', 'uploads/');
 define('THUMBNAILS_DIR', UPLOADS_DIR . 'thumbnails/');
 
+// Настройка на часова зона
+date_default_timezone_set('Europe/Sofia'); // Задайте вашата часова зона
+
+// Дефиниция на текущите дата и час
+define('CURRENT_DATE', date('Y-m-d'));
+define('CURRENT_DAY', date('N')); // Ден от седмицата (1 за понеделник до 7 за неделя)
+define('CURRENT_TIME', date('H:i:s')); // Текущ час в 24-часов формат
+
 // Имена на страниците
 define('BRAND', 'BAR HEY');
 define('SITE_TITLE', BRAND . ' - TV MEDIA');

@@ -48,7 +48,7 @@ require_once 'config.php';
         let currentIndex = 0;
         const mediaElement = document.getElementById('media');
         const videoElement = document.getElementById('video');
-        const imageSlideInterval = <?php echo IMAGE_SLIDE_INTERVAL; ?>; // Интервалът за смяна на изображенията от config.php
+        const imageSlideInterval = <?php echo IMAGE_SLIDE_INTERVAL; ?>;
 
         async function fetchMediaFiles() {
             try {
@@ -72,13 +72,10 @@ require_once 'config.php';
                 mediaElement.style.display = 'none';
                 videoElement.src = file;
                 videoElement.style.display = 'block';
-
-                // Видео с настройки: autoplay, muted, controls hidden
                 videoElement.muted = true;
                 videoElement.controls = false;
                 videoElement.play();
 
-                // Слушане за края на видеото, за да се премине към следващия медиафайл
                 videoElement.onended = () => {
                     currentIndex = (currentIndex + 1) % mediaFiles.length;
                     showMedia();
@@ -88,7 +85,6 @@ require_once 'config.php';
                 mediaElement.src = file;
                 mediaElement.style.display = 'block';
 
-                // Показване на изображение за времето, зададено в config.php
                 setTimeout(() => {
                     currentIndex = (currentIndex + 1) % mediaFiles.length;
                     showMedia();
@@ -98,5 +94,25 @@ require_once 'config.php';
 
         fetchMediaFiles();
     </script>
+
+    <script>
+        let lastReloadCheck = null;
+
+        function checkForReload() {
+            fetch('reload_trigger.txt')
+                .then(response => response.text())
+                .then(timestamp => {
+                    if (lastReloadCheck && lastReloadCheck !== timestamp) {
+                        location.reload(); // Презарежда страницата, ако има промяна
+                        console.log('asd')
+                    }
+                    lastReloadCheck = timestamp;
+                })
+                .catch(error => console.error('Error checking for reload:', error));
+        }
+
+        setInterval(checkForReload, 5000); // Проверка на всеки 5 секунди
+    </script>
+
 </body>
 </html>
