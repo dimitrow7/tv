@@ -167,47 +167,64 @@ $mediaFiles = $mysqli->query("SELECT * FROM media_files");
                 });
             </script>
 
-            <h2 class="mb-4">Медийни файлове:</h2>
-
             <!-- Форма за качване на файлове -->
-            <form method="POST" enctype="multipart/form-data" class="mb-4 card p-4 shadow">
-                <div class="mb-3">
-                    <input type="file" name="file" accept="image/*,video/*" class="form-control" required>
-                </div>
+<form method="POST" enctype="multipart/form-data" class="mb-4 card p-4 shadow">
+    <div class="mb-3">
+        <input type="file" name="file" accept="image/*,video/*" class="form-control" required>
+    </div>
 
-                <!-- График за показване по дни от седмицата -->
-                <div class="week-schedule">
-                    <?php
-                    $days = [
-                        '1' => 'Понеделник',
-                        '2' => 'Вторник',
-                        '3' => 'Сряда',
-                        '4' => 'Четвъртък',
-                        '5' => 'Петък',
-                        '6' => 'Събота',
-                        '7' => 'Неделя'
-                    ];
-                    foreach ($days as $dayNum => $dayName) {
-                        echo "
-                        <div class='row mb-2'>
-                            <div class='col-md-1'>
-                                <input type='checkbox' name='schedule[$dayNum][enabled]' value='1' checked>
-                            </div>
-                            <div class='col-md-3'>$dayName</div>
-                            <div class='col-md-4'>
-                                <label>Начален час:</label>
-                                <input type='text' name='schedule[$dayNum][start_time]' class='form-control timepicker' value='00:00'>
-                            </div>
-                            <div class='col-md-4'>
-                                <label>Краен час:</label>
-                                <input type='text' name='schedule[$dayNum][end_time]' class='form-control timepicker' value='23:59'>
-                            </div>
-                        </div>";
-                    }
-                    ?>
+    <!-- Бутон за показване на графика в pop-up стил -->
+    <button type="button" onclick="toggleSchedule()" class="btn btn-info mb-3">График за показване</button>
+
+    <!-- Скрит контейнер с настройките за графика -->
+    <div id="schedule-container" style="display: none; border: 1px solid #ddd; padding: 10px; background-color: #f9f9f9; border-radius: 5px;">
+        <h5 class="mb-3">Настройки за график</h5>
+        <?php
+        $days = [
+            '1' => 'Понеделник',
+            '2' => 'Вторник',
+            '3' => 'Сряда',
+            '4' => 'Четвъртък',
+            '5' => 'Петък',
+            '6' => 'Събота',
+            '7' => 'Неделя'
+        ];
+        foreach ($days as $dayNum => $dayName) {
+            echo "
+            <div class='row mb-2'>
+                <div class='col-md-1'>
+                    <input type='checkbox' name='schedule[$dayNum][enabled]' value='1' checked>
                 </div>
-                <button type="submit" name="upload" class="btn btn-success mt-3">Качване</button>
-            </form>
+                <div class='col-md-3'>$dayName</div>
+                <div class='col-md-4'>
+                    <label>Начален час:</label>
+                    <input type='text' name='schedule[$dayNum][start_time]' class='form-control timepicker' value='00:00'>
+                </div>
+                <div class='col-md-4'>
+                    <label>Краен час:</label>
+                    <input type='text' name='schedule[$dayNum][end_time]' class='form-control timepicker' value='23:59'>
+                </div>
+            </div>";
+        }
+        ?>
+    </div>
+
+    <button type="submit" name="upload" class="btn btn-success mt-3">Качване</button>
+</form>
+
+<!-- JavaScript за показване/скриване на графика -->
+<script>
+    function toggleSchedule() {
+        var scheduleContainer = document.getElementById('schedule-container');
+        if (scheduleContainer.style.display === 'none') {
+            scheduleContainer.style.display = 'block';
+        } else {
+            scheduleContainer.style.display = 'none';
+        }
+    }
+</script>
+
+            <h2 class="mb-4">Медийни файлове:</h2>
 
             <div class="row row-cols-1 row-cols-md-4 g-4">
             <?php while ($file = $mediaFiles->fetch_assoc()): ?>
@@ -242,60 +259,9 @@ $mediaFiles = $mysqli->query("SELECT * FROM media_files");
                             <p class="card-text"><i class="bi bi-person-square"></i> <?php echo htmlspecialchars($file['uploaded_by']); ?></p>
                             <p class="card-text"><i class="bi bi-calendar4-week"></i> <?php echo htmlspecialchars($file['uploaded_at']); ?></p>
 
-                            <!-- Форма за редактиране на график -->
-                            <form action="update_media.php" method="POST" class="edit-schedule-form">
-                                <input type="hidden" name="file_id" value="<?php echo $file['id']; ?>">
-
-                                <h5 class="mt-3">Редактиране на графика:</h5>
-                                <?php
-                                $days = [
-                                    '1' => 'Понеделник',
-                                    '2' => 'Вторник',
-                                    '3' => 'Сряда',
-                                    '4' => 'Четвъртък',
-                                    '5' => 'Петък',
-                                    '6' => 'Събота',
-                                    '7' => 'Неделя'
-                                ];
-
-                                $scheduleQuery = $mysqli->prepare("SELECT day_of_week, start_time, end_time FROM media_schedule WHERE media_file_id = ?");
-                                $scheduleQuery->bind_param("i", $file['id']);
-                                $scheduleQuery->execute();
-                                $scheduleResult = $scheduleQuery->get_result();
-                                $schedules = [];
-                                
-                                while ($schedule = $scheduleResult->fetch_assoc()) {
-                                    $schedules[$schedule['day_of_week']] = $schedule;
-                                }
-                                $scheduleQuery->close();
-
-                                foreach ($days as $dayNum => $dayName) {
-                                    $is_checked = isset($schedules[$dayNum]) ? 'checked' : '';
-                                    $start_time = $schedules[$dayNum]['start_time'] ?? '00:00';
-                                    $end_time = $schedules[$dayNum]['end_time'] ?? '23:59';
-                                    echo "
-                                    <div class='row mb-2'>
-                                        <div class='col-md-1'>
-                                            <input type='checkbox' name='schedule[$dayNum][enabled]' value='1' $is_checked>
-                                        </div>
-                                        <div class='col-md-3'>$dayName</div>
-                                        <div class='col-md-4'>
-                                            <label>Начален час:</label>
-                                            <input type='text' name='schedule[$dayNum][start_time]' class='form-control timepicker' value='$start_time'>
-                                        </div>
-                                        <div class='col-md-4'>
-                                            <label>Краен час:</label>
-                                            <input type='text' name='schedule[$dayNum][end_time]' class='form-control timepicker' value='$end_time'>
-                                        </div>
-                                    </div>";
-                                }
-                                ?>
-                                <button type="submit" class="btn btn-success mt-2">
-                                    <i class="bi bi-floppy2-fill"></i> Запази промените
-                                </button>
-                            </form>
-
                             <div class="card-control mt-3">
+                                <!-- Бутон за показване на графика в pop-up стил -->
+                                <button type="button" onclick="toggleSchedule2('<?php echo $file['id']; ?>')" class="btn btn-info me-2">График за показване</button>
                                 <a href="<?php echo htmlspecialchars($file['file_path']); ?>" class="btn btn-primary me-2" target="_blank">
                                     <i class="bi bi-eye"></i> 
                                 </a>
@@ -303,10 +269,82 @@ $mediaFiles = $mysqli->query("SELECT * FROM media_files");
                                     <i class="bi bi-trash3-fill"></i>
                                 </a>
                             </div>
+                            
+
+                            <!-- Скрит контейнер с настройките за графика -->
+                            <div class="schedule-container" id="schedule-container-<?php echo $file['id']; ?>" style="display: none; border: 1px solid #ddd; padding: 10px; background-color: #f9f9f9; border-radius: 5px;">
+                                <h5 class="mb-3">Настройки за график</h5>
+                                <form action="update_media.php" method="POST" class="edit-schedule-form">
+                                    <input type="hidden" name="file_id" value="<?php echo $file['id']; ?>">
+
+                                    <?php
+                                    $days = [
+                                        '1' => 'Пон.',
+                                        '2' => 'Вт.',
+                                        '3' => 'Ср.',
+                                        '4' => 'Чет.',
+                                        '5' => 'Пет.',
+                                        '6' => 'Съб.',
+                                        '7' => 'Нед.'
+                                    ];
+
+                                    // Извличане на графика от базата данни
+                                    $scheduleQuery = $mysqli->prepare("SELECT day_of_week, start_time, end_time FROM media_schedule WHERE media_file_id = ?");
+                                    $scheduleQuery->bind_param("i", $file['id']);
+                                    $scheduleQuery->execute();
+                                    $scheduleResult = $scheduleQuery->get_result();
+                                    $schedules = [];
+                                    
+                                    while ($schedule = $scheduleResult->fetch_assoc()) {
+                                        $schedules[$schedule['day_of_week']] = $schedule;
+                                    }
+                                    $scheduleQuery->close();
+
+                                    foreach ($days as $dayNum => $dayName) {
+                                        $is_checked = isset($schedules[$dayNum]) ? 'checked' : '';
+                                        $start_time = $schedules[$dayNum]['start_time'] ?? '00:00';
+                                        $end_time = $schedules[$dayNum]['end_time'] ?? '23:59';
+                                        echo "
+                                        <div class='row mb-2'>
+                                            <div class='col-md-1'>
+                                                <input type='checkbox' name='schedule[$dayNum][enabled]' value='1' $is_checked>
+                                            </div>
+                                            <div class='col-md-3'>$dayName</div>
+                                            <div class='col-md-4'>
+                                                <label>Начален час:</label>
+                                                <input type='text' name='schedule[$dayNum][start_time]' class='form-control timepicker' value='$start_time'>
+                                            </div>
+                                            <div class='col-md-4'>
+                                                <label>Краен час:</label>
+                                                <input type='text' name='schedule[$dayNum][end_time]' class='form-control timepicker' value='$end_time'>
+                                            </div>
+                                        </div>";
+                                    }
+                                    ?>
+                                    <button type="submit" class="btn btn-success mt-2">
+                                        <i class="bi bi-floppy2-fill"></i> Запази промените
+                                    </button>
+                                </form>
+                            </div>
+
+                            
                         </div>
                     </div>
                 </div>
             <?php endwhile; ?>
+
+            <!-- JavaScript за показване/скриване на графика -->
+            <script>
+                function toggleSchedule2(fileId) {
+                    var scheduleContainer = document.getElementById('schedule-container-' + fileId);
+                    if (scheduleContainer.style.display === 'none') {
+                        scheduleContainer.style.display = 'block';
+                    } else {
+                        scheduleContainer.style.display = 'none';
+                    }
+                }
+            </script>
+
 
             </div>
         <?php endif; ?>
