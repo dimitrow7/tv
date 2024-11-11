@@ -1,0 +1,761 @@
+[2024-11-09 16:20:02] Получени данни: Array
+(
+    [job] => Array
+        (
+            [id] => 1460644593
+            [state] => finished
+            [created_at] => 2024-11-09T16:08:56.352Z
+            [updated_at] => 2024-11-09T16:09:04.886Z
+            [submitted_at] => 2024-11-09T16:08:56.352Z
+            [pass_through] => 
+            [test] => 
+        )
+
+    [outputs] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 5775550713
+                    [url] => https://zencoder-temp-storage-us-east-1.s3.amazonaws.com/o/20241109/b1faa48691f1785163cbe15d548b996f/f5eb16e590b6eae721d468fe8a405835.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI456JQ76GBU7FECA%2F20241109%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241109T160906Z&X-Amz-Expires=86398&X-Amz-SignedHeaders=host&X-Amz-Signature=89a2ea0fb3f12a0291f511a1436e19e205039adf8b3f3bd944d3de74db7f2462
+                    [label] => Compressed Video
+                    [state] => finished
+                    [format] => mpeg4
+                    [type] => standard
+                    [frame_rate] => 24
+                    [duration_in_ms] => 13334
+                    [audio_sample_rate] => 
+                    [audio_bitrate_in_kbps] => 
+                    [audio_codec] => 
+                    [height] => 720
+                    [width] => 1280
+                    [file_size_in_bytes] => 2599003
+                    [video_codec] => h264
+                    [total_bitrate_in_kbps] => 1558
+                    [channels] => 
+                    [video_bitrate_in_kbps] => 1558
+                    [fragment_duration_in_ms] => 
+                    [rfc_6381_video_codec] => avc1.42001f
+                    [rfc_6381_audio_codec] => 
+                    [md5_checksum] => 
+                    [hdr_video_range] => SDR
+                )
+
+        )
+
+    [input] => Array
+        (
+            [id] => 1460599587
+            [format] => mpeg4
+            [frame_rate] => 24
+            [duration_in_ms] => 13334
+            [audio_sample_rate] => 
+            [audio_bitrate_in_kbps] => 
+            [audio_codec] => 
+            [height] => 720
+            [width] => 1280
+            [file_size_in_bytes] => 4367291
+            [video_codec] => h264
+            [total_bitrate_in_kbps] => 
+            [channels] => 
+            [video_bitrate_in_kbps] => 2643
+            [state] => finished
+            [md5_checksum] => 
+        )
+
+)
+
+[2024-11-09 16:20:02] Задачата е завършена успешно.
+[2024-11-09 16:20:02] Сваляне на обработения файл от URL: https://zencoder-temp-storage-us-east-1.s3.amazonaws.com/o/20241109/b1faa48691f1785163cbe15d548b996f/f5eb16e590b6eae721d468fe8a405835.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI456JQ76GBU7FECA%2F20241109%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241109T160906Z&X-Amz-Expires=86398&X-Amz-SignedHeaders=host&X-Amz-Signature=89a2ea0fb3f12a0291f511a1436e19e205039adf8b3f3bd944d3de74db7f2462
+[2024-11-09 16:20:31] Получени данни: Array
+(
+    [job] => Array
+        (
+            [id] => 1460644593
+            [state] => finished
+            [created_at] => 2024-11-09T16:08:56.352Z
+            [updated_at] => 2024-11-09T16:09:04.886Z
+            [submitted_at] => 2024-11-09T16:08:56.352Z
+            [pass_through] => 
+            [test] => 
+        )
+
+    [outputs] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 5775550713
+                    [url] => https://zencoder-temp-storage-us-east-1.s3.amazonaws.com/o/20241109/b1faa48691f1785163cbe15d548b996f/f5eb16e590b6eae721d468fe8a405835.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI456JQ76GBU7FECA%2F20241109%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241109T160906Z&X-Amz-Expires=86398&X-Amz-SignedHeaders=host&X-Amz-Signature=89a2ea0fb3f12a0291f511a1436e19e205039adf8b3f3bd944d3de74db7f2462
+                    [label] => Compressed Video
+                    [state] => finished
+                    [format] => mpeg4
+                    [type] => standard
+                    [frame_rate] => 24
+                    [duration_in_ms] => 13334
+                    [audio_sample_rate] => 
+                    [audio_bitrate_in_kbps] => 
+                    [audio_codec] => 
+                    [height] => 720
+                    [width] => 1280
+                    [file_size_in_bytes] => 2599003
+                    [video_codec] => h264
+                    [total_bitrate_in_kbps] => 1558
+                    [channels] => 
+                    [video_bitrate_in_kbps] => 1558
+                    [fragment_duration_in_ms] => 
+                    [rfc_6381_video_codec] => avc1.42001f
+                    [rfc_6381_audio_codec] => 
+                    [md5_checksum] => 
+                    [hdr_video_range] => SDR
+                )
+
+        )
+
+    [input] => Array
+        (
+            [id] => 1460599587
+            [format] => mpeg4
+            [frame_rate] => 24
+            [duration_in_ms] => 13334
+            [audio_sample_rate] => 
+            [audio_bitrate_in_kbps] => 
+            [audio_codec] => 
+            [height] => 720
+            [width] => 1280
+            [file_size_in_bytes] => 4367291
+            [video_codec] => h264
+            [total_bitrate_in_kbps] => 
+            [channels] => 
+            [video_bitrate_in_kbps] => 2643
+            [state] => finished
+            [md5_checksum] => 
+        )
+
+)
+
+[2024-11-09 16:20:31] Задачата е завършена успешно.
+[2024-11-09 16:20:31] Сваляне на обработения файл от URL: https://zencoder-temp-storage-us-east-1.s3.amazonaws.com/o/20241109/b1faa48691f1785163cbe15d548b996f/f5eb16e590b6eae721d468fe8a405835.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI456JQ76GBU7FECA%2F20241109%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241109T160906Z&X-Amz-Expires=86398&X-Amz-SignedHeaders=host&X-Amz-Signature=89a2ea0fb3f12a0291f511a1436e19e205039adf8b3f3bd944d3de74db7f2462
+[2024-11-09 16:20:33] Получени данни: Array
+(
+    [job] => Array
+        (
+            [id] => 1460644593
+            [state] => finished
+            [created_at] => 2024-11-09T16:08:56.352Z
+            [updated_at] => 2024-11-09T16:09:04.886Z
+            [submitted_at] => 2024-11-09T16:08:56.352Z
+            [pass_through] => 
+            [test] => 
+        )
+
+    [outputs] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 5775550713
+                    [url] => https://zencoder-temp-storage-us-east-1.s3.amazonaws.com/o/20241109/b1faa48691f1785163cbe15d548b996f/f5eb16e590b6eae721d468fe8a405835.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI456JQ76GBU7FECA%2F20241109%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241109T160906Z&X-Amz-Expires=86398&X-Amz-SignedHeaders=host&X-Amz-Signature=89a2ea0fb3f12a0291f511a1436e19e205039adf8b3f3bd944d3de74db7f2462
+                    [label] => Compressed Video
+                    [state] => finished
+                    [format] => mpeg4
+                    [type] => standard
+                    [frame_rate] => 24
+                    [duration_in_ms] => 13334
+                    [audio_sample_rate] => 
+                    [audio_bitrate_in_kbps] => 
+                    [audio_codec] => 
+                    [height] => 720
+                    [width] => 1280
+                    [file_size_in_bytes] => 2599003
+                    [video_codec] => h264
+                    [total_bitrate_in_kbps] => 1558
+                    [channels] => 
+                    [video_bitrate_in_kbps] => 1558
+                    [fragment_duration_in_ms] => 
+                    [rfc_6381_video_codec] => avc1.42001f
+                    [rfc_6381_audio_codec] => 
+                    [md5_checksum] => 
+                    [hdr_video_range] => SDR
+                )
+
+        )
+
+    [input] => Array
+        (
+            [id] => 1460599587
+            [format] => mpeg4
+            [frame_rate] => 24
+            [duration_in_ms] => 13334
+            [audio_sample_rate] => 
+            [audio_bitrate_in_kbps] => 
+            [audio_codec] => 
+            [height] => 720
+            [width] => 1280
+            [file_size_in_bytes] => 4367291
+            [video_codec] => h264
+            [total_bitrate_in_kbps] => 
+            [channels] => 
+            [video_bitrate_in_kbps] => 2643
+            [state] => finished
+            [md5_checksum] => 
+        )
+
+)
+
+[2024-11-09 16:20:33] Задачата е завършена успешно.
+[2024-11-09 16:20:33] Сваляне на обработения файл от URL: https://zencoder-temp-storage-us-east-1.s3.amazonaws.com/o/20241109/b1faa48691f1785163cbe15d548b996f/f5eb16e590b6eae721d468fe8a405835.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI456JQ76GBU7FECA%2F20241109%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241109T160906Z&X-Amz-Expires=86398&X-Amz-SignedHeaders=host&X-Amz-Signature=89a2ea0fb3f12a0291f511a1436e19e205039adf8b3f3bd944d3de74db7f2462
+[2024-11-09 16:21:01] Получени данни: Array
+(
+    [job] => Array
+        (
+            [id] => 1460644593
+            [state] => finished
+            [created_at] => 2024-11-09T16:08:56.352Z
+            [updated_at] => 2024-11-09T16:09:04.886Z
+            [submitted_at] => 2024-11-09T16:08:56.352Z
+            [pass_through] => 
+            [test] => 
+        )
+
+    [outputs] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 5775550713
+                    [url] => https://zencoder-temp-storage-us-east-1.s3.amazonaws.com/o/20241109/b1faa48691f1785163cbe15d548b996f/f5eb16e590b6eae721d468fe8a405835.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI456JQ76GBU7FECA%2F20241109%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241109T160906Z&X-Amz-Expires=86398&X-Amz-SignedHeaders=host&X-Amz-Signature=89a2ea0fb3f12a0291f511a1436e19e205039adf8b3f3bd944d3de74db7f2462
+                    [label] => Compressed Video
+                    [state] => finished
+                    [format] => mpeg4
+                    [type] => standard
+                    [frame_rate] => 24
+                    [duration_in_ms] => 13334
+                    [audio_sample_rate] => 
+                    [audio_bitrate_in_kbps] => 
+                    [audio_codec] => 
+                    [height] => 720
+                    [width] => 1280
+                    [file_size_in_bytes] => 2599003
+                    [video_codec] => h264
+                    [total_bitrate_in_kbps] => 1558
+                    [channels] => 
+                    [video_bitrate_in_kbps] => 1558
+                    [fragment_duration_in_ms] => 
+                    [rfc_6381_video_codec] => avc1.42001f
+                    [rfc_6381_audio_codec] => 
+                    [md5_checksum] => 
+                    [hdr_video_range] => SDR
+                )
+
+        )
+
+    [input] => Array
+        (
+            [id] => 1460599587
+            [format] => mpeg4
+            [frame_rate] => 24
+            [duration_in_ms] => 13334
+            [audio_sample_rate] => 
+            [audio_bitrate_in_kbps] => 
+            [audio_codec] => 
+            [height] => 720
+            [width] => 1280
+            [file_size_in_bytes] => 4367291
+            [video_codec] => h264
+            [total_bitrate_in_kbps] => 
+            [channels] => 
+            [video_bitrate_in_kbps] => 2643
+            [state] => finished
+            [md5_checksum] => 
+        )
+
+)
+
+[2024-11-09 16:21:01] Задачата е завършена успешно.
+[2024-11-09 16:21:01] Сваляне на обработения файл от URL: https://zencoder-temp-storage-us-east-1.s3.amazonaws.com/o/20241109/b1faa48691f1785163cbe15d548b996f/f5eb16e590b6eae721d468fe8a405835.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI456JQ76GBU7FECA%2F20241109%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241109T160906Z&X-Amz-Expires=86398&X-Amz-SignedHeaders=host&X-Amz-Signature=89a2ea0fb3f12a0291f511a1436e19e205039adf8b3f3bd944d3de74db7f2462
+[2024-11-09 16:21:34] Получени данни: Array
+(
+    [job] => Array
+        (
+            [id] => 1460644593
+            [state] => finished
+            [created_at] => 2024-11-09T16:08:56.352Z
+            [updated_at] => 2024-11-09T16:09:04.886Z
+            [submitted_at] => 2024-11-09T16:08:56.352Z
+            [pass_through] => 
+            [test] => 
+        )
+
+    [outputs] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 5775550713
+                    [url] => https://zencoder-temp-storage-us-east-1.s3.amazonaws.com/o/20241109/b1faa48691f1785163cbe15d548b996f/f5eb16e590b6eae721d468fe8a405835.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI456JQ76GBU7FECA%2F20241109%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241109T160906Z&X-Amz-Expires=86398&X-Amz-SignedHeaders=host&X-Amz-Signature=89a2ea0fb3f12a0291f511a1436e19e205039adf8b3f3bd944d3de74db7f2462
+                    [label] => Compressed Video
+                    [state] => finished
+                    [format] => mpeg4
+                    [type] => standard
+                    [frame_rate] => 24
+                    [duration_in_ms] => 13334
+                    [audio_sample_rate] => 
+                    [audio_bitrate_in_kbps] => 
+                    [audio_codec] => 
+                    [height] => 720
+                    [width] => 1280
+                    [file_size_in_bytes] => 2599003
+                    [video_codec] => h264
+                    [total_bitrate_in_kbps] => 1558
+                    [channels] => 
+                    [video_bitrate_in_kbps] => 1558
+                    [fragment_duration_in_ms] => 
+                    [rfc_6381_video_codec] => avc1.42001f
+                    [rfc_6381_audio_codec] => 
+                    [md5_checksum] => 
+                    [hdr_video_range] => SDR
+                )
+
+        )
+
+    [input] => Array
+        (
+            [id] => 1460599587
+            [format] => mpeg4
+            [frame_rate] => 24
+            [duration_in_ms] => 13334
+            [audio_sample_rate] => 
+            [audio_bitrate_in_kbps] => 
+            [audio_codec] => 
+            [height] => 720
+            [width] => 1280
+            [file_size_in_bytes] => 4367291
+            [video_codec] => h264
+            [total_bitrate_in_kbps] => 
+            [channels] => 
+            [video_bitrate_in_kbps] => 2643
+            [state] => finished
+            [md5_checksum] => 
+        )
+
+)
+
+[2024-11-09 16:21:34] Задачата е завършена успешно.
+[2024-11-09 16:21:34] Сваляне на обработения файл от URL: https://zencoder-temp-storage-us-east-1.s3.amazonaws.com/o/20241109/b1faa48691f1785163cbe15d548b996f/f5eb16e590b6eae721d468fe8a405835.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI456JQ76GBU7FECA%2F20241109%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241109T160906Z&X-Amz-Expires=86398&X-Amz-SignedHeaders=host&X-Amz-Signature=89a2ea0fb3f12a0291f511a1436e19e205039adf8b3f3bd944d3de74db7f2462
+[2024-11-09 16:21:59] Получени данни: Array
+(
+    [job] => Array
+        (
+            [id] => 1460644593
+            [state] => finished
+            [created_at] => 2024-11-09T16:08:56.352Z
+            [updated_at] => 2024-11-09T16:09:04.886Z
+            [submitted_at] => 2024-11-09T16:08:56.352Z
+            [pass_through] => 
+            [test] => 
+        )
+
+    [outputs] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 5775550713
+                    [url] => https://zencoder-temp-storage-us-east-1.s3.amazonaws.com/o/20241109/b1faa48691f1785163cbe15d548b996f/f5eb16e590b6eae721d468fe8a405835.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI456JQ76GBU7FECA%2F20241109%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241109T160906Z&X-Amz-Expires=86398&X-Amz-SignedHeaders=host&X-Amz-Signature=89a2ea0fb3f12a0291f511a1436e19e205039adf8b3f3bd944d3de74db7f2462
+                    [label] => Compressed Video
+                    [state] => finished
+                    [format] => mpeg4
+                    [type] => standard
+                    [frame_rate] => 24
+                    [duration_in_ms] => 13334
+                    [audio_sample_rate] => 
+                    [audio_bitrate_in_kbps] => 
+                    [audio_codec] => 
+                    [height] => 720
+                    [width] => 1280
+                    [file_size_in_bytes] => 2599003
+                    [video_codec] => h264
+                    [total_bitrate_in_kbps] => 1558
+                    [channels] => 
+                    [video_bitrate_in_kbps] => 1558
+                    [fragment_duration_in_ms] => 
+                    [rfc_6381_video_codec] => avc1.42001f
+                    [rfc_6381_audio_codec] => 
+                    [md5_checksum] => 
+                    [hdr_video_range] => SDR
+                )
+
+        )
+
+    [input] => Array
+        (
+            [id] => 1460599587
+            [format] => mpeg4
+            [frame_rate] => 24
+            [duration_in_ms] => 13334
+            [audio_sample_rate] => 
+            [audio_bitrate_in_kbps] => 
+            [audio_codec] => 
+            [height] => 720
+            [width] => 1280
+            [file_size_in_bytes] => 4367291
+            [video_codec] => h264
+            [total_bitrate_in_kbps] => 
+            [channels] => 
+            [video_bitrate_in_kbps] => 2643
+            [state] => finished
+            [md5_checksum] => 
+        )
+
+)
+
+[2024-11-09 16:21:59] Задачата е завършена успешно.
+[2024-11-09 16:21:59] Сваляне на обработения файл от URL: https://zencoder-temp-storage-us-east-1.s3.amazonaws.com/o/20241109/b1faa48691f1785163cbe15d548b996f/f5eb16e590b6eae721d468fe8a405835.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI456JQ76GBU7FECA%2F20241109%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241109T160906Z&X-Amz-Expires=86398&X-Amz-SignedHeaders=host&X-Amz-Signature=89a2ea0fb3f12a0291f511a1436e19e205039adf8b3f3bd944d3de74db7f2462
+[2024-11-09 16:23:36] Получени данни: Array
+(
+    [job] => Array
+        (
+            [id] => 1460644593
+            [state] => finished
+            [created_at] => 2024-11-09T16:08:56.352Z
+            [updated_at] => 2024-11-09T16:09:04.886Z
+            [submitted_at] => 2024-11-09T16:08:56.352Z
+            [pass_through] => 
+            [test] => 
+        )
+
+    [outputs] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 5775550713
+                    [url] => https://zencoder-temp-storage-us-east-1.s3.amazonaws.com/o/20241109/b1faa48691f1785163cbe15d548b996f/f5eb16e590b6eae721d468fe8a405835.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI456JQ76GBU7FECA%2F20241109%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241109T160906Z&X-Amz-Expires=86398&X-Amz-SignedHeaders=host&X-Amz-Signature=89a2ea0fb3f12a0291f511a1436e19e205039adf8b3f3bd944d3de74db7f2462
+                    [label] => Compressed Video
+                    [state] => finished
+                    [format] => mpeg4
+                    [type] => standard
+                    [frame_rate] => 24
+                    [duration_in_ms] => 13334
+                    [audio_sample_rate] => 
+                    [audio_bitrate_in_kbps] => 
+                    [audio_codec] => 
+                    [height] => 720
+                    [width] => 1280
+                    [file_size_in_bytes] => 2599003
+                    [video_codec] => h264
+                    [total_bitrate_in_kbps] => 1558
+                    [channels] => 
+                    [video_bitrate_in_kbps] => 1558
+                    [fragment_duration_in_ms] => 
+                    [rfc_6381_video_codec] => avc1.42001f
+                    [rfc_6381_audio_codec] => 
+                    [md5_checksum] => 
+                    [hdr_video_range] => SDR
+                )
+
+        )
+
+    [input] => Array
+        (
+            [id] => 1460599587
+            [format] => mpeg4
+            [frame_rate] => 24
+            [duration_in_ms] => 13334
+            [audio_sample_rate] => 
+            [audio_bitrate_in_kbps] => 
+            [audio_codec] => 
+            [height] => 720
+            [width] => 1280
+            [file_size_in_bytes] => 4367291
+            [video_codec] => h264
+            [total_bitrate_in_kbps] => 
+            [channels] => 
+            [video_bitrate_in_kbps] => 2643
+            [state] => finished
+            [md5_checksum] => 
+        )
+
+)
+
+[2024-11-09 16:23:36] Задачата е завършена успешно.
+[2024-11-09 16:23:36] Сваляне на обработения файл от URL: https://zencoder-temp-storage-us-east-1.s3.amazonaws.com/o/20241109/b1faa48691f1785163cbe15d548b996f/f5eb16e590b6eae721d468fe8a405835.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI456JQ76GBU7FECA%2F20241109%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241109T160906Z&X-Amz-Expires=86398&X-Amz-SignedHeaders=host&X-Amz-Signature=89a2ea0fb3f12a0291f511a1436e19e205039adf8b3f3bd944d3de74db7f2462
+[2024-11-09 16:23:58] Получени данни: Array
+(
+    [job] => Array
+        (
+            [id] => 1460644593
+            [state] => finished
+            [created_at] => 2024-11-09T16:08:56.352Z
+            [updated_at] => 2024-11-09T16:09:04.886Z
+            [submitted_at] => 2024-11-09T16:08:56.352Z
+            [pass_through] => 
+            [test] => 
+        )
+
+    [outputs] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 5775550713
+                    [url] => https://zencoder-temp-storage-us-east-1.s3.amazonaws.com/o/20241109/b1faa48691f1785163cbe15d548b996f/f5eb16e590b6eae721d468fe8a405835.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI456JQ76GBU7FECA%2F20241109%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241109T160906Z&X-Amz-Expires=86398&X-Amz-SignedHeaders=host&X-Amz-Signature=89a2ea0fb3f12a0291f511a1436e19e205039adf8b3f3bd944d3de74db7f2462
+                    [label] => Compressed Video
+                    [state] => finished
+                    [format] => mpeg4
+                    [type] => standard
+                    [frame_rate] => 24
+                    [duration_in_ms] => 13334
+                    [audio_sample_rate] => 
+                    [audio_bitrate_in_kbps] => 
+                    [audio_codec] => 
+                    [height] => 720
+                    [width] => 1280
+                    [file_size_in_bytes] => 2599003
+                    [video_codec] => h264
+                    [total_bitrate_in_kbps] => 1558
+                    [channels] => 
+                    [video_bitrate_in_kbps] => 1558
+                    [fragment_duration_in_ms] => 
+                    [rfc_6381_video_codec] => avc1.42001f
+                    [rfc_6381_audio_codec] => 
+                    [md5_checksum] => 
+                    [hdr_video_range] => SDR
+                )
+
+        )
+
+    [input] => Array
+        (
+            [id] => 1460599587
+            [format] => mpeg4
+            [frame_rate] => 24
+            [duration_in_ms] => 13334
+            [audio_sample_rate] => 
+            [audio_bitrate_in_kbps] => 
+            [audio_codec] => 
+            [height] => 720
+            [width] => 1280
+            [file_size_in_bytes] => 4367291
+            [video_codec] => h264
+            [total_bitrate_in_kbps] => 
+            [channels] => 
+            [video_bitrate_in_kbps] => 2643
+            [state] => finished
+            [md5_checksum] => 
+        )
+
+)
+
+[2024-11-09 16:23:58] Задачата е завършена успешно.
+[2024-11-09 16:23:58] Сваляне на обработения файл от URL: https://zencoder-temp-storage-us-east-1.s3.amazonaws.com/o/20241109/b1faa48691f1785163cbe15d548b996f/f5eb16e590b6eae721d468fe8a405835.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI456JQ76GBU7FECA%2F20241109%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241109T160906Z&X-Amz-Expires=86398&X-Amz-SignedHeaders=host&X-Amz-Signature=89a2ea0fb3f12a0291f511a1436e19e205039adf8b3f3bd944d3de74db7f2462
+[2024-11-09 16:23:59] Файлът е успешно свален и записан на: /home/dimitrow/web/demo.slidetv.eu/public_html/uploads/compressed_f5eb16e590b6eae721d468fe8a405835.mp4
+[2024-11-09 16:23:59] Актуализиране на базата данни за файл ID: 1460644593
+[2024-11-09 18:23:59] Базата данни е успешно актуализирана.
+[2024-11-09 16:24:45] Получени данни: Array
+(
+    [job] => Array
+        (
+            [id] => 1460644593
+            [state] => finished
+            [created_at] => 2024-11-09T16:08:56.352Z
+            [updated_at] => 2024-11-09T16:09:04.886Z
+            [submitted_at] => 2024-11-09T16:08:56.352Z
+            [pass_through] => 
+            [test] => 
+        )
+
+    [outputs] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 5775550713
+                    [url] => https://zencoder-temp-storage-us-east-1.s3.amazonaws.com/o/20241109/b1faa48691f1785163cbe15d548b996f/f5eb16e590b6eae721d468fe8a405835.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI456JQ76GBU7FECA%2F20241109%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241109T160906Z&X-Amz-Expires=86398&X-Amz-SignedHeaders=host&X-Amz-Signature=89a2ea0fb3f12a0291f511a1436e19e205039adf8b3f3bd944d3de74db7f2462
+                    [label] => Compressed Video
+                    [state] => finished
+                    [format] => mpeg4
+                    [type] => standard
+                    [frame_rate] => 24
+                    [duration_in_ms] => 13334
+                    [audio_sample_rate] => 
+                    [audio_bitrate_in_kbps] => 
+                    [audio_codec] => 
+                    [height] => 720
+                    [width] => 1280
+                    [file_size_in_bytes] => 2599003
+                    [video_codec] => h264
+                    [total_bitrate_in_kbps] => 1558
+                    [channels] => 
+                    [video_bitrate_in_kbps] => 1558
+                    [fragment_duration_in_ms] => 
+                    [rfc_6381_video_codec] => avc1.42001f
+                    [rfc_6381_audio_codec] => 
+                    [md5_checksum] => 
+                    [hdr_video_range] => SDR
+                )
+
+        )
+
+    [input] => Array
+        (
+            [id] => 1460599587
+            [format] => mpeg4
+            [frame_rate] => 24
+            [duration_in_ms] => 13334
+            [audio_sample_rate] => 
+            [audio_bitrate_in_kbps] => 
+            [audio_codec] => 
+            [height] => 720
+            [width] => 1280
+            [file_size_in_bytes] => 4367291
+            [video_codec] => h264
+            [total_bitrate_in_kbps] => 
+            [channels] => 
+            [video_bitrate_in_kbps] => 2643
+            [state] => finished
+            [md5_checksum] => 
+        )
+
+)
+
+[2024-11-09 16:24:45] Задачата е завършена успешно.
+[2024-11-09 16:24:45] Сваляне на обработения файл от URL: https://zencoder-temp-storage-us-east-1.s3.amazonaws.com/o/20241109/b1faa48691f1785163cbe15d548b996f/f5eb16e590b6eae721d468fe8a405835.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI456JQ76GBU7FECA%2F20241109%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241109T160906Z&X-Amz-Expires=86398&X-Amz-SignedHeaders=host&X-Amz-Signature=89a2ea0fb3f12a0291f511a1436e19e205039adf8b3f3bd944d3de74db7f2462
+[2024-11-09 16:24:46] Файлът е успешно свален и записан на: /home/dimitrow/web/demo.slidetv.eu/public_html/uploads/compressed_f5eb16e590b6eae721d468fe8a405835.mp4
+[2024-11-09 16:24:46] Актуализиране на базата данни за файл ID: 1460644593
+[2024-11-09 18:24:46] Базата данни е успешно актуализирана.
+[2024-11-09 16:27:43] Получени данни: Array
+(
+    [job] => Array
+        (
+            [id] => 1460644593
+            [state] => finished
+            [created_at] => 2024-11-09T16:08:56.352Z
+            [updated_at] => 2024-11-09T16:09:04.886Z
+            [submitted_at] => 2024-11-09T16:08:56.352Z
+            [pass_through] => 
+            [test] => 
+        )
+
+    [outputs] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 5775550713
+                    [url] => https://zencoder-temp-storage-us-east-1.s3.amazonaws.com/o/20241109/b1faa48691f1785163cbe15d548b996f/f5eb16e590b6eae721d468fe8a405835.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI456JQ76GBU7FECA%2F20241109%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241109T160906Z&X-Amz-Expires=86398&X-Amz-SignedHeaders=host&X-Amz-Signature=89a2ea0fb3f12a0291f511a1436e19e205039adf8b3f3bd944d3de74db7f2462
+                    [label] => Compressed Video
+                    [state] => finished
+                    [format] => mpeg4
+                    [type] => standard
+                    [frame_rate] => 24
+                    [duration_in_ms] => 13334
+                    [audio_sample_rate] => 
+                    [audio_bitrate_in_kbps] => 
+                    [audio_codec] => 
+                    [height] => 720
+                    [width] => 1280
+                    [file_size_in_bytes] => 2599003
+                    [video_codec] => h264
+                    [total_bitrate_in_kbps] => 1558
+                    [channels] => 
+                    [video_bitrate_in_kbps] => 1558
+                    [fragment_duration_in_ms] => 
+                    [rfc_6381_video_codec] => avc1.42001f
+                    [rfc_6381_audio_codec] => 
+                    [md5_checksum] => 
+                    [hdr_video_range] => SDR
+                )
+
+        )
+
+    [input] => Array
+        (
+            [id] => 1460599587
+            [format] => mpeg4
+            [frame_rate] => 24
+            [duration_in_ms] => 13334
+            [audio_sample_rate] => 
+            [audio_bitrate_in_kbps] => 
+            [audio_codec] => 
+            [height] => 720
+            [width] => 1280
+            [file_size_in_bytes] => 4367291
+            [video_codec] => h264
+            [total_bitrate_in_kbps] => 
+            [channels] => 
+            [video_bitrate_in_kbps] => 2643
+            [state] => finished
+            [md5_checksum] => 
+        )
+
+)
+
+[2024-11-09 16:27:43] Задачата е завършена успешно.
+[2024-11-09 16:27:43] Сваляне на обработения файл от URL: https://zencoder-temp-storage-us-east-1.s3.amazonaws.com/o/20241109/b1faa48691f1785163cbe15d548b996f/f5eb16e590b6eae721d468fe8a405835.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI456JQ76GBU7FECA%2F20241109%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241109T160906Z&X-Amz-Expires=86398&X-Amz-SignedHeaders=host&X-Amz-Signature=89a2ea0fb3f12a0291f511a1436e19e205039adf8b3f3bd944d3de74db7f2462
+[2024-11-09 16:27:44] Файлът е успешно свален и записан на: /home/dimitrow/web/demo.slidetv.eu/public_html/uploads/compressed_f5eb16e590b6eae721d468fe8a405835.mp4
+[2024-11-09 16:27:44] Актуализиране на базата данни за файл ID: 1460644593
+[2024-11-09 18:27:44] Базата данни е успешно актуализирана.
+[2024-11-11 22:28:32] Получени данни: Array
+(
+    [job] => Array
+        (
+            [id] => 1461507812
+            [state] => finished
+            [created_at] => 2024-11-11T22:28:19.108Z
+            [updated_at] => 2024-11-11T22:28:28.151Z
+            [submitted_at] => 2024-11-11T22:28:19.109Z
+            [pass_through] => 
+            [test] => 
+        )
+
+    [outputs] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 5780427729
+                    [url] => https://zencoder-temp-storage-us-east-1.s3.amazonaws.com/o/20241111/23ed1d05f9d4fb596d8b1f611f3e038f/f31500d324b5a69aa7e030d22d1f32e3.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI456JQ76GBU7FECA%2F20241111%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241111T222831Z&X-Amz-Expires=86396&X-Amz-SignedHeaders=host&X-Amz-Signature=76e0e2853a99c6193fdb7aae288cfdd275ffabdec5229fbf8fb53c428dff22fe
+                    [label] => Compressed Video
+                    [state] => finished
+                    [format] => mpeg4
+                    [type] => standard
+                    [frame_rate] => 25
+                    [duration_in_ms] => 13800
+                    [audio_sample_rate] => 
+                    [audio_bitrate_in_kbps] => 
+                    [audio_codec] => 
+                    [height] => 720
+                    [width] => 1280
+                    [file_size_in_bytes] => 4618200
+                    [video_codec] => h264
+                    [total_bitrate_in_kbps] => 2675
+                    [channels] => 
+                    [video_bitrate_in_kbps] => 2675
+                    [fragment_duration_in_ms] => 
+                    [rfc_6381_video_codec] => avc1.42001f
+                    [rfc_6381_audio_codec] => 
+                    [md5_checksum] => 
+                    [hdr_format] => sdr
+                    [hdr_video_range] => SDR
+                )
+
+        )
+
+    [input] => Array
+        (
+            [id] => 1461462806
+            [format] => mpeg4
+            [frame_rate] => 25
+            [duration_in_ms] => 13800
+            [audio_sample_rate] => 
+            [audio_bitrate_in_kbps] => 
+            [audio_codec] => 
+            [height] => 720
+            [width] => 1280
+            [file_size_in_bytes] => 5084234
+            [video_codec] => h264
+            [total_bitrate_in_kbps] => 
+            [channels] => 
+            [video_bitrate_in_kbps] => 2944
+            [state] => finished
+            [md5_checksum] => 
+        )
+
+)
+
+[2024-11-11 22:28:32] Задачата е завършена успешно.
+[2024-11-11 22:28:32] Сваляне на обработения файл от URL: https://zencoder-temp-storage-us-east-1.s3.amazonaws.com/o/20241111/23ed1d05f9d4fb596d8b1f611f3e038f/f31500d324b5a69aa7e030d22d1f32e3.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI456JQ76GBU7FECA%2F20241111%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241111T222831Z&X-Amz-Expires=86396&X-Amz-SignedHeaders=host&X-Amz-Signature=76e0e2853a99c6193fdb7aae288cfdd275ffabdec5229fbf8fb53c428dff22fe
+[2024-11-11 22:28:33] Файлът е успешно свален и записан на: /home/dimitrow/web/demo.slidetv.eu/public_html/uploads/compressed_f31500d324b5a69aa7e030d22d1f32e3.mp4
+[2024-11-11 22:28:33] Актуализиране на базата данни за файл ID: 1461507812
+[2024-11-12 00:28:33] Базата данни е успешно актуализирана с правилния път и миниатюра.

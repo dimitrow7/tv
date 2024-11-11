@@ -1,0 +1,5 @@
+{
+    "require": {
+        "zencoder/zencoder-php": "^2.2"
+    }
+}

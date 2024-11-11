@@ -1,0 +1,66 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "fd4470dc085ca60ff07d9cfe06782e24",
+    "packages": [
+        {
+            "name": "zencoder/zencoder-php",
+            "version": "v2.2.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zencoder/zencoder-php.git",
+                "reference": "f1617a7f89a7422dd8682c276dd644764c4200f8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zencoder/zencoder-php/zipball/f1617a7f89a7422dd8682c276dd644764c4200f8",
+                "reference": "f1617a7f89a7422dd8682c276dd644764c4200f8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Services_Zencoder": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Zencoder",
+                    "homepage": "https://zencoder.com"
+                }
+            ],
+            "description": "Zencoder integration library for PHP",
+            "homepage": "https://github.com/zencoder/zencoder-php",
+            "keywords": [
+                "cloud",
+                "encoder",
+                "encoding",
+                "zencoder"
+            ],
+            "support": {
+                "issues": "https://github.com/zencoder/zencoder-php/issues",
+                "source": "https://github.com/zencoder/zencoder-php/tree/v2.2.4"
+            },
+            "time": "2019-09-05T18:44:06+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.2.0"
+}
