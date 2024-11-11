@@ -42,9 +42,6 @@ if (isset($_POST['upload']) && isset($_FILES['file'])) {
     if (move_uploaded_file($file['tmp_name'], $filePath)) {
         error_log("Файлът е качен успешно: $filePath");
 
-        // URL за входящ файл
-        $inputUrl = ZENCODER_INPUT_URL . "$fileName";
-
         // Подготовка на заявката към Zencoder
         $apiKey = ZENCODER_API;
         $webhookUrl = ZENCODER_WEBHOOK;
@@ -52,7 +49,8 @@ if (isset($_POST['upload']) && isset($_FILES['file'])) {
 
         $data = [
             'api_key' => $apiKey,
-            'input' => $inputUrl,
+            'input' => ZENCODER_INPUT_URL . "$fileName",
+            'pass_through' => uniqid(), // Уникален идентификатор за връзка с базата данни
             'notifications' => [$webhookUrl],
             'outputs' => [
                 [
@@ -84,14 +82,16 @@ if (isset($_POST['upload']) && isset($_FILES['file'])) {
         } else {
             $responseData = json_decode($response, true);
             $jobId = $responseData['id'];
+            $passThrough = $data['pass_through'];
 
             // Запис в базата данни
             $stmt = $mysqli->prepare("
-                INSERT INTO media_files (file_path, zencoder_job_id, uploaded_by) 
-                VALUES (?, ?, ?)
+                INSERT INTO media_files (file_path, zencoder_job_id, uploaded_by, pass_through) 
+                VALUES (?, ?, ?, ?)
             ");
             $uploadedBy = $_SESSION['user'];
-            $stmt->bind_param("sis", $filePath, $jobId, $uploadedBy);
+            $relativePath = '/uploads/' . $fileName; // Относителен път за URL
+            $stmt->bind_param("siss", $relativePath, $jobId, $uploadedBy, $passThrough);
             $stmt->execute();
             $stmt->close();
 
@@ -101,6 +101,7 @@ if (isset($_POST['upload']) && isset($_FILES['file'])) {
         echo "Грешка при качването на файла.";
     }
 }
+
 
 
 
@@ -279,18 +280,18 @@ $mediaFiles = $mysqli->query("SELECT * FROM media_files");
                 <?php while ($file = $mediaFiles->fetch_assoc()): ?>
                     <div class="col-md-4 mb-4">
                         <div class="card shadow">
-                            <?php if ($file['file_type'] === 'image'): ?>
-                                <img src="<?php echo htmlspecialchars($file['file_path']); ?>" class="card-img-top" alt="Image thumbnail">
-                            <?php elseif ($file['file_type'] === 'video' && !empty($file['thumbnail'])): ?>
-                                <div class="position-relative">
-                                    <img src="<?php echo htmlspecialchars($file['thumbnail']); ?>" class="card-img-top" alt="Video thumbnail">
-                                    <span class="play-icon position-absolute top-50 start-50 translate-middle">
-                                        <i class="bi bi-play-circle-fill" style="font-size: 3rem; color: white;"></i>
-                                    </span>
-                                </div>
-                            <?php else: ?>
-                                <video src="<?php echo htmlspecialchars($file['file_path']); ?>" class="card-img-top" muted autoplay loop></video>
-                            <?php endif; ?>
+                        <?php if ($file['file_type'] === 'image'): ?>
+                            <img src="<?php echo htmlspecialchars($file['file_path']); ?>" class="card-img-top" alt="Image thumbnail">
+                        <?php elseif ($file['file_type'] === 'video' && !empty($file['thumbnail'])): ?>
+                            <div class="position-relative">
+                                <img src="<?php echo htmlspecialchars($file['thumbnail']); ?>" class="card-img-top" alt="Video thumbnail">
+                                <span class="play-icon position-absolute top-50 start-50 translate-middle">
+                                    <i class="bi bi-play-circle-fill" style="font-size: 3rem; color: white;"></i>
+                                </span>
+                            </div>
+                        <?php else: ?>
+                            <video src="<?php echo htmlspecialchars($file['file_path']); ?>" class="card-img-top" muted autoplay loop></video>
+                        <?php endif; ?>
 
                             <div class="card-body">
                                 <p class="card-text"><i class="bi bi-folder2-open"></i> 

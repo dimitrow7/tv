@@ -42,12 +42,23 @@ if (isset($data['job']['state']) && $data['job']['state'] === 'finished') {
     if ($http_code === 200 && !$curl_error) {
         logMessage("Файлът е успешно свален и записан на: $local_path");
 
+        // Генериране на миниатюра
+        $thumbnail_path = __DIR__ . '/uploads/thumbnails/' . pathinfo($local_path, PATHINFO_FILENAME) . '.jpg';
+        if (!is_dir(__DIR__ . '/uploads/thumbnails')) {
+            mkdir(__DIR__ . '/uploads/thumbnails', 0777, true);
+        }
+        $ffmpeg = "/usr/bin/ffmpeg";
+        $ffmpeg_command = "$ffmpeg -i $local_path -ss 00:00:01.000 -vframes 1 $thumbnail_path";
+        exec($ffmpeg_command, $output, $return_var);
+
+        if ($return_var === 0) {
+            logMessage("Миниатюрата е успешно генерирана: $thumbnail_path");
+        } else {
+            logMessage("Грешка при генериране на миниатюра.");
+            $thumbnail_path = null;
+        }
+
         // Актуализиране на базата данни
-        $file_id = $data['job']['id'];
-        $new_path = '/uploads/' . 'compressed_' . basename($local_path); 
-
-        logMessage("Актуализиране на базата данни за файл ID: $file_id");
-
         require_once 'config.php';
         $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
@@ -56,14 +67,22 @@ if (isset($data['job']['state']) && $data['job']['state'] === 'finished') {
             die('Connection failed: ' . $mysqli->connect_error);
         }
 
+        // Намиране на записа в таблицата чрез pass_through
+        $pass_through = $data['job']['pass_through'];
+        logMessage("Актуализиране на базата данни за pass_through: $pass_through");
+
+        $new_path = '/uploads/' . 'compressed_' . basename($local_path);
+        $thumbnail_url = $thumbnail_path ? '/uploads/thumbnails/' . basename($thumbnail_path) : null;
+
         $stmt = $mysqli->prepare("UPDATE media_files SET file_path = ?, thumbnail = ? WHERE id = ?");
-        $stmt->bind_param('ssi', $new_path, $thumbnail_path, $file_id);
+        $stmt->bind_param('ssi', $new_path, $thumbnail_url, $pass_through);
 
         if ($stmt->execute()) {
             logMessage("Базата данни е успешно актуализирана с правилния път и миниатюра.");
         } else {
             logMessage("Грешка при актуализиране на базата данни: " . $stmt->error);
         }
+
         $stmt->close();
         $mysqli->close();
     } else {
@@ -75,4 +94,3 @@ if (isset($data['job']['state']) && $data['job']['state'] === 'finished') {
 }
 
 http_response_code(200); // Връщаме успех на Zencoder
-?>
